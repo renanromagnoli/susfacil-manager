@@ -2,14 +2,16 @@ export default class Laudo {
     #id: string
     #name: string
     #number: number
-    #from: string
     #clinic: string
+    #from: string
+    #to?: string
 
-    constructor(name: string, number: number, from: string, clinic: string, id: string = null) {
+    constructor(name: string, number: number, clinic: string, from: string, to: string, id: string = null) {
         this.#name = name
         this.#number = number
-        this.#from = from
         this.#clinic = clinic
+        this.#from = from
+        this.#to = to
     }
 
     static empty() {
@@ -25,11 +27,14 @@ export default class Laudo {
     get number() {
         return this.#number
     }
+    get clinic() {
+        return this.#clinic
+    }
     get from() {
         return this.#from
     }
-    get clinic() {
-        return this.#clinic
+    get to() {
+        return this.#to
     }
 
 }
