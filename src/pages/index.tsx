@@ -11,6 +11,14 @@ export default function Home() {
     new Laudo('Generoso', 123898565, 'Pediatria', 'HAGF', ''),
   ]
 
+  function selectedLaudo(laudo: Laudo) {
+    console.log(laudo.name, 'selecionado')
+  }
+
+  function deletedLaudo(laudo: Laudo) {
+    console.log(laudo.name, ' deletado')
+  }
+
   return (
     <div className={`
       flex
@@ -19,7 +27,7 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <Layout title="Cadastro">
-        <TableLaudos laudos={laudos}></TableLaudos>
+        <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
       </Layout>
     </div>
   )
