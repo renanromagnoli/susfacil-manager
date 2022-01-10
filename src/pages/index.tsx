@@ -1,3 +1,4 @@
+import { Button } from "../components/Button";
 import { Layout } from "../components/Layout";
 import { TableLaudos } from "../components/TableLaudo";
 import Laudo from "../core/laudo";
@@ -27,6 +28,11 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <Layout title="Cadastro">
+        <div className="flex justify-end">
+          <Button className="mb-4" color='blue'>
+            Anotar Laudo
+          </Button>
+        </div>
         <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
       </Layout>
     </div>
