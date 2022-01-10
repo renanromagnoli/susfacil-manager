@@ -1,4 +1,5 @@
 import { Button } from "../components/Button";
+import { Form } from "../components/Form";
 import { Layout } from "../components/Layout";
 import { TableLaudos } from "../components/TableLaudo";
 import Laudo from "../core/laudo";
@@ -33,7 +34,8 @@ export default function Home() {
             Anotar Laudo
           </Button>
         </div>
-        <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+        {/* <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/> */}
+        <Form laudo={laudos[0]}/>
       </Layout>
     </div>
   )
