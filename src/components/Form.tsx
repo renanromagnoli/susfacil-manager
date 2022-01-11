@@ -5,6 +5,8 @@ import { Entry } from "./Entry";
 
 interface FormProps {
     laudo: Laudo
+    changedLaudo?: (laudo: Laudo) => void
+    cancel?: () => void
 }
 
 export function Form(props: FormProps) {
@@ -29,10 +31,10 @@ export function Form(props: FormProps) {
             <Entry title="Destino" value={destino}  changedValue={setDestino}/>
 
             <div className="flex justify-end">
-                <Button>
+                <Button onClick={() => props.changedLaudo?.(new Laudo(nome, numero, clinica, origem, destino, id))}>
                     {id ? 'Alterar' : 'Salvar'}
                 </Button>
-                <Button>Cancelar</Button>
+                <Button onClick={props.cancel}>Cancelar</Button>
             </div>
         </div>
     )

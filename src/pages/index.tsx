@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "../components/Button";
 import { Form } from "../components/Form";
 import { Layout } from "../components/Layout";
@@ -21,6 +22,12 @@ export default function Home() {
     console.log(laudo.name, ' deletado')
   }
 
+  function saveLaudo(laudo: Laudo) {
+    console.log(laudo)
+  }
+
+  const [visible, setVisible] = useState<'table' | 'form'>('table')
+
   return (
     <div className={`
       flex
@@ -29,13 +36,25 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <Layout title="Cadastro">
-        <div className="flex justify-end">
-          <Button className="mb-4" color='blue'>
-            Anotar Laudo
-          </Button>
-        </div>
-        {/* <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/> */}
-        <Form laudo={laudos[0]}/>
+        {visible === 'table' ? (
+          <>
+            <div className="flex justify-end">
+              <Button className="mb-4" color='blue' onClick={() => setVisible('form')}>
+                Anotar Laudo
+              </Button>
+            </div>
+            <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+          </>
+        )
+        :
+        (
+          <Form 
+            laudo={laudos[0]}
+            cancel={() => setVisible('table')}
+            changedLaudo={saveLaudo}
+          />
+        )
+        }
       </Layout>
     </div>
   )
