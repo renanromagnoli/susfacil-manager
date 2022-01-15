@@ -1,5 +1,5 @@
 import Laudo from "../core/laudo";
-import {AddNoteIcon, ArrowIcon, InfoIcon, PencilIcon, TrashIcon } from "./Icons";
+import {DocumentAdd, ArrowIcon, InfoIcon, PencilIcon, TrashIcon } from "./Icons";
 
 interface TableLaudosProps {
     laudos: Laudo[]
@@ -36,18 +36,40 @@ export function TableLaudos(props: TableLaudosProps) {
     function dataRender() {
         return props.laudos?.map((laudo, index) => {
             return (
-                <tr key={laudo.id}
-                    className={`
-                        ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
-                    `}
-                >
-                    {infoIconsRender(laudo)}
-                    <td className="text-center p-2 text-blue-600">{laudo.number}</td>
-                    <td className="text-left p-2">{laudo.name}</td>
-                    <td className="text-center p-2">{laudo.from}</td>
-                    <td className="text-center p-2">{laudo.to}</td>
-                    {showActions ? actionsRender(laudo) : false}
-                </tr>
+                <>
+                    <tr key={laudo.id}
+                        className={`
+                            ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
+                        `}>
+                        {infoIconsRender(laudo)}
+                        <td className="text-center p-2 text-blue-600">{laudo.number}</td>
+                        <td className="text-left p-2">{laudo.name}</td>
+                        <td className="text-center p-2">{laudo.from}</td>
+                        <td className="text-center p-2">{laudo.to}</td>
+                        {showActions ? actionsRender(laudo) : false}
+                    </tr>
+                    <tr className={`
+                        relative
+                        w-full bg-blue-700 text-gray-50
+                        flex flex-col 
+                        `}>
+                        <tr className="flex p-2 w-full">
+                            {/* <td>15/01</td>
+                            <td className="px-2">12:17h</td> */}
+                            <td className="bg-red-600 w-full">Este laudo será aceito amanhã</td>
+                        </tr>
+                        <tr className="flex p-2 w-full">
+                            {/* <td>15/01</td>
+                            <td className="px-2">12:17h</td> */}
+                            <td>Este laudo será aceito amanhã</td>
+                        </tr>
+                        <hr />
+                        {/* <tr >
+                            <td>15/01 12:17h</td>
+                            <td>Este laudo será aceito amanhã</td>
+                        </tr> */}
+                    </tr>
+                </>
             )
         })
     }
@@ -61,7 +83,8 @@ export function TableLaudos(props: TableLaudosProps) {
                         hover:text-green-500
                         transition-all ease-in .2s
                     `}>{PencilIcon}</button>
-                ) : false}
+                    ) : false}
+                <button>{DocumentAdd}</button>
                 {props.deletedLaudo ? (
                     <button onClick={() => props.deletedLaudo?.(laudo)} className={`
                         text-red-900
@@ -76,6 +99,7 @@ export function TableLaudos(props: TableLaudosProps) {
 
     return (
         <table className={`
+            table-auto
             w-full
             rounded-xl overflow-hidden
         `}>
