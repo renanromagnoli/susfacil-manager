@@ -4,6 +4,7 @@ interface EntryProps {
     value: any
     readonly?: boolean
     changedValue?: (value: any) => void
+    maxl?: any
 
 }
 
@@ -32,6 +33,7 @@ export function Entry(props: EntryProps) {
                     py-2
                     ${props.readonly ? '' : 'focus:bg-gray-50'}
                 `}
+                maxLength={props.maxl}
             />
         </div>
     )

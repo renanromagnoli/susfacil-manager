@@ -15,7 +15,7 @@ export function TableLaudos(props: TableLaudosProps) {
         return (
             <tr>
                 <th className="text-center"></th>
-                <th className="text-center">Código</th>
+                <th className="text-center">Nº do Laudo</th>
                 <th className="text-center">Nome</th>
                 <th className="text-center">Origem</th>
                 <th className="text-center">Destino</th>
@@ -25,9 +25,9 @@ export function TableLaudos(props: TableLaudosProps) {
         )
     }
 
-    function infosRender(laudo: Laudo) {
+    function infoIconsRender(laudo: Laudo) {
         return (
-            <td className="flex justify-center">
+            <td className="flex justify-center content-center">
                 <button>{InfoIcon}</button>
                 <button>{ArrowIcon}</button>
             </td>
@@ -41,7 +41,7 @@ export function TableLaudos(props: TableLaudosProps) {
                         ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
                     `}
                 >
-                    {infosRender(laudo)}
+                    {infoIconsRender(laudo)}
                     <td className="text-center p-2 text-blue-600">{laudo.number}</td>
                     <td className="text-left p-2">{laudo.name}</td>
                     <td className="text-center p-2">{laudo.from}</td>
@@ -54,7 +54,7 @@ export function TableLaudos(props: TableLaudosProps) {
 
     function actionsRender(laudo: Laudo) {
         return (
-            <td className="flex text-center">
+            <td className="flex text-center justify-center items-center">
                 {props.selectedLaudo ? (
                     <button onClick={() => props.selectedLaudo?.(laudo)} className={`
                         text-green-800

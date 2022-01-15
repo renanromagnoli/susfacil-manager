@@ -24,7 +24,7 @@ export function Form(props: FormProps) {
             bg-gray-100
             rounded-lg
         `}>
-            <Entry title="Número" type="number" value={numero} changedValue={setNumero}/>
+            <Entry title="Número" type="number" value={numero} changedValue={setNumero} maxl="9"/>
             <Entry title="Nome" value={nome} changedValue={setNome}/>
             <Entry title="Clínica" value={clinica} changedValue={setClinica}/>
             <Entry title="Origem" value={origem} changedValue={setOrigem}/>
