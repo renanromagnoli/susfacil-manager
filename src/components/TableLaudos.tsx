@@ -13,62 +13,62 @@ export function TableLaudos(props: TableLaudosProps) {
 
     function HeaderTableRender() {
         return (
-            <tr>
-                <th className="text-center"></th>
-                <th className="text-center">Nº do Laudo</th>
-                <th className="text-center">Nome</th>
-                <th className="text-center">Origem</th>
-                <th className="text-center">Destino</th>
-                {showActions ? <th className="text-center">Ações</th> : false}
-            </tr>
+            <>
+                <div className="text-center"></div>
+                <div className="text-center">Nº do Laudo</div>
+                <div className="text-center">Nome</div>
+                <div className="text-center">Origem</div>
+                <div className="text-center">Destino</div>
+                {showActions ? <div className="text-center">Ações</div> : false}
+            </>
 
         )
     }
 
     function infoIconsRender(laudo: Laudo) {
         return (
-            <td className="flex justify-center content-center">
+            <div className="flex justify-center content-center">
                 <button>{InfoIcon}</button>
                 <button>{ArrowIcon}</button>
-            </td>
+            </div>
         )
     }
     function dataRender() {
         return props.laudos?.map((laudo, index) => {
             return (
                 <>
-                    <tr key={laudo.id}
+                    <div key={laudo.id}
                         className={`
                             ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
                         `}>
                         {infoIconsRender(laudo)}
-                        <td className="text-center p-2 text-blue-600">{laudo.number}</td>
-                        <td className="text-left p-2">{laudo.name}</td>
-                        <td className="text-center p-2">{laudo.from}</td>
-                        <td className="text-center p-2">{laudo.to}</td>
+                        <div className="text-center p-2 text-blue-600">{laudo.number}</div>
+                        <div className="text-left p-2">{laudo.name}</div>
+                        <div className="text-center p-2">{laudo.from}</div>
+                        <div className="text-center p-2">{laudo.to}</div>
                         {showActions ? actionsRender(laudo) : false}
-                    </tr>
-                    <tr className={`
+                    </div>
+                    <div className={`
                         relative
                         w-full bg-blue-700 text-gray-50
                         flex flex-col 
                         `}>
-                        <tr className="flex p-2 w-full">
-                            {/* <td>15/01</td>
-                            <td className="px-2">12:17h</td> */}
-                            <td className="bg-red-600 w-full">Este laudo será aceito amanhã</td>
-                        </tr>
-                        <tr className="flex p-2 w-full">
-                            {/* <td>15/01</td>
-                            <td className="px-2">12:17h</td> */}
-                            <td>Este laudo será aceito amanhã</td>
-                        </tr>
+                        <div className="flex p-2 w-full">
+                            {/* <div>15/01</div>
+                            <div className="px-2">12:17h</div> */}
+                            <div className="bg-red-600 w-full">Este laudo será aceito amanhã</div>
+                        </div>
+                        <div className="flex p-2 w-full">
+                            {/* <div>15/01</div>
+                            <div className="px-2">12:17h</div> */}
+                            <div>Este laudo será aceito amanhã</div>
+                        </div>
                         <hr />
-                        {/* <tr >
-                            <td>15/01 12:17h</td>
-                            <td>Este laudo será aceito amanhã</td>
-                        </tr> */}
-                    </tr>
+                        {/* <div >
+                            <div>15/01 12:17h</div>
+                            <div>Este laudo será aceito amanhã</div>
+                        </div> */}
+                    </div>
                 </>
             )
         })
@@ -76,7 +76,7 @@ export function TableLaudos(props: TableLaudosProps) {
 
     function actionsRender(laudo: Laudo) {
         return (
-            <td className="flex text-center justify-center items-center">
+            <div className="flex text-center justify-center items-center">
                 {props.selectedLaudo ? (
                     <button onClick={() => props.selectedLaudo?.(laudo)} className={`
                         text-green-800
@@ -92,26 +92,28 @@ export function TableLaudos(props: TableLaudosProps) {
                         transition-all ease-in .2s
                     `}>{TrashIcon}</button>
                 ) : false}
-            </td>
+            </div>
         )
     }
 
 
     return (
-        <table className={`
-            table-auto
-            w-full
+        <div className={`
+            grid
+            grid-cols-6
             rounded-xl overflow-hidden
         `}>
-            <thead className={`
+            {HeaderTableRender()}
+            {dataRender()}
+            {/* <div className={`
                 bg-gradient-to-r from-blue-300 to-blue-400
                 text-gray-50
             `}>
                 {HeaderTableRender()}
-            </thead>
-            <tbody>
+            </div>
+            <div>
                 {dataRender()}
-            </tbody>
-        </table>
+            </div> */}
+        </div>
     )
 }
