@@ -1,4 +1,6 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document'
+import GlobalStyle from '../styles/global'
+
 // import 'tailwindcss/tailwind.css'
 
 export default class MyDocument extends Document {
@@ -8,7 +10,9 @@ export default class MyDocument extends Document {
                 <Head>
 
                 </Head>
+                
                 <body>
+                    <GlobalStyle />
                     <Main />
                     <NextScript />
                 </body>
