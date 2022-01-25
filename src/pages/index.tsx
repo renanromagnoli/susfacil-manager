@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
+import { Clinics } from "../components/Clinics";
 import { Form } from "../components/Form";
 import { Layout } from "../components/Layout";
 import { TableLaudos } from "../components/TableLaudos";
@@ -39,29 +40,31 @@ export default function Home() {
   return (
     <div className={`
       flex
+      flex-col
       justify-center items-center
       h-screen
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
+      <Clinics />
       <Layout title="Ortopedia">
-        {visible === 'table' ? (
-          <>
-            <div className="flex justify-end">
-              <Button className="mb-4" color='blue' onClick={newLaudo}>
-                Anotar Laudo
-              </Button>
-            </div>
-            <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
-          </>
-        )
-        :
-        (
-          <Form 
-            laudo={laudo}
-            cancel={() => setVisible('table')}
-            changedLaudo={saveLaudo}
-          />
-        )
+        { visible === 'table' 
+          ? (
+              <>
+                <div className="flex justify-end">
+                  <Button className="mb-4" color='blue' onClick={newLaudo}>
+                    Anotar Laudo
+                  </Button>
+                </div>
+                <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+              </>
+            )
+        : (
+            <Form 
+              laudo={laudo}
+              cancel={() => setVisible('table')}
+              changedLaudo={saveLaudo}
+            />
+          )
         }
       </Layout>
     </div>

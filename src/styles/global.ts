@@ -6,4 +6,10 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
+
+    @media print {
+        body {
+            display: none !important;
+        }
+    }
 `;
