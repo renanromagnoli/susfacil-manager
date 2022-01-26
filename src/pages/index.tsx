@@ -18,6 +18,8 @@ export default function Home() {
   
   // useEffect(() => setListLaudos(laudos), [])
 
+  useEffect(() => setListLaudos(JSON.parse(localStorage.getItem('laudos')) || []), [])
+
   // useEffect(() => {
   //   localStorage.setItem('laudos', JSON.stringify(listLaudos))
   // }, listLaudos)
@@ -33,18 +35,35 @@ export default function Home() {
   }
   
   function saveLaudo(laudo: Laudo) {
-    let formLaudo = laudo
-    console.log('Formlaudo:', formLaudo)
+    // let formLaudo = laudo
+    // console.log('Formlaudo:', formLaudo)
 
-    let localLaudos = JSON.parse(localStorage.getItem('laudos')) || []
-    // localLaudos.push([laudo.number, laudo.name, laudo.clinic, laudo.from, laudo.to])
-    localLaudos.push({
-      number: laudo.number, 
+    let formLaudo = {
+      number: +laudo.number, 
       name: laudo.name, 
       clinic: laudo.clinic, 
       from: laudo.from, 
       to: laudo.to
-    })
+    }
+
+    // setListLaudos(JSON.parse(localStorage.getItem('laudos')) || [])
+    // setListLaudos(JSON.parse(localStorage.getItem('laudos')) || [])
+    // localLaudos.push([laudo.number, laudo.name, laudo.clinic, laudo.from, laudo.to])
+
+
+    let localLaudos = JSON.parse(localStorage.getItem('laudos')) || []
+
+    const existsLaudo = localLaudos.find(l => l.number === +laudo.number)
+    // console.log('exists:', existsLaudo)
+    if (existsLaudo) {
+      const index = localLaudos.indexOf(existsLaudo)
+      localLaudos.splice(index, 1, formLaudo)
+      // localLaudos.includes(formLaudo, index)
+  
+    } else {
+      localLaudos.push(formLaudo)
+    }
+    // localLaudos.push(formLaudo)
     // let laudosList = listLaudos
     // laudosList.push(formLaudo)
     setListLaudos(localLaudos)
