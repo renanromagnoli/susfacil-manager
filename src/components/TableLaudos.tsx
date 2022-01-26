@@ -33,6 +33,7 @@ export function TableLaudos(props: TableLaudosProps) {
             </td>
         )
     }
+
     function dataRender() {
         return props.laudos?.map((laudo, index) => {
             return (

@@ -10,23 +10,27 @@ export default class Laudo {
     #clinic: string
     #from: string
     #to?: string
-    #notes?: Array<NoteI>
+    // #notes?: Array<NoteI>
 
-    constructor(name: string, number: number, clinic: string, from: string, to: string, notes: Array<NoteI>, id: string = null) {
+    constructor(name: string, number: number, clinic: string, from: string, to: string, id: string = null) {
         this.#number = number
         this.#name = name
         this.#clinic = clinic
         this.#from = from
         this.#to = to
-        this.#notes = notes
+        // this.#notes = notes
     }
 
     static empty() {
         return new Laudo('', 0, '', '', null, null)
     }
 
-    set newNote(note: NoteI) {
-        this.#notes.push(note)
+    // set newNote(note: NoteI) {
+    //     this.#notes.push(note)
+    // }
+
+    userData() {
+        return [this.#number, this.#name, this.#clinic, this.#from, this.#to]
     }
     
     get id() {
