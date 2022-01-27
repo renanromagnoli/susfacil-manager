@@ -38,7 +38,7 @@ export function TableLaudos(props: TableLaudosProps) {
         return props.laudos?.map((laudo, index) => {
             return (
                 <>
-                    <tr key={laudo.id}
+                    <tr key={index}
                         className={`
                             ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
                         `}>

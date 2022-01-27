@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Clinics } from "../components/Clinics";
 import { Form } from "../components/Form";
-import { Layout } from "../components/Layout";
+import { Note } from "../components/Note";
 import { TableLaudos } from "../components/TableLaudos";
 import Laudo from "../core/laudo";
 
@@ -19,6 +19,10 @@ export default function Home() {
   // useEffect(() => setListLaudos(laudos), [])
 
   useEffect(() => setListLaudos(JSON.parse(localStorage.getItem('laudos')) || []), [])
+
+  useEffect(() => {
+    renderTableOfLaudos()
+  }, listLaudos)
 
   // useEffect(() => {
   //   localStorage.setItem('laudos', JSON.stringify(listLaudos))
@@ -73,7 +77,21 @@ export default function Home() {
   }
 
   function deletedLaudo(laudo: Laudo) {
+
+    let atualList = listLaudos
+    const indexToDelete = atualList.indexOf(laudo)
     console.log(laudo.name, ' deletado')
+    atualList.splice(indexToDelete, 1)
+    setListLaudos(atualList)
+    localStorage.setItem('laudos', JSON.stringify(atualList))
+    location.reload()
+  }
+
+  function renderTableOfLaudos() {
+    return (
+      <TableLaudos laudos={listLaudos} 
+        selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+    )
   }
 
   return (
@@ -85,7 +103,7 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <Clinics />
-      <Layout title="Ortopedia">
+      <Note title="Ortopedia">
         { visible === 'table' 
           ? (
               <>
@@ -94,7 +112,7 @@ export default function Home() {
                     Anotar Laudo
                   </Button>
                 </div>
-                <TableLaudos laudos={listLaudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+                {renderTableOfLaudos()}
               </>
             )
         : (
@@ -105,7 +123,9 @@ export default function Home() {
             />
           )
         }
-      </Layout>
+      </Note>
+      <Button className="absolute bottom-0 right-0">Limpar Laudos</Button>
+      
     </div>
   )
 }

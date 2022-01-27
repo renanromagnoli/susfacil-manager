@@ -9,6 +9,7 @@ interface EntryProps {
 }
 
 export function Entry(props: EntryProps) {
+
     return (
         <div 
             className={`
