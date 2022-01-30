@@ -98,7 +98,7 @@ export default function Home() {
     <div className={`
       flex
       flex-col
-      justify-center items-center
+      justify-start items-center
       h-screen
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>

@@ -14,6 +14,7 @@ export function Note(props: NoteProps) {
             my-3
         `}>
             <Title>{props.title}</Title>
+            
             <div className="p-6">
                 {props.children}
             </div>

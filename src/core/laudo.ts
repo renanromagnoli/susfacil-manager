@@ -22,7 +22,7 @@ export default class Laudo {
     }
 
     static empty() {
-        return new Laudo('', 0, '', '', null, null)
+        return new Laudo('', null, '', '', null, null)
     }
 
     // set newNote(note: NoteI) {

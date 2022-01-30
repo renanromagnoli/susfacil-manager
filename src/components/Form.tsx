@@ -2,6 +2,7 @@ import { useState } from "react";
 import Laudo from "../core/laudo";
 import { Button } from "./Button";
 import { Entry } from "./Entry";
+import { Select } from "./Select";
 
 interface FormProps {
     laudo: Laudo
@@ -23,10 +24,13 @@ export function Form(props: FormProps) {
         <div className={`
             bg-gray-100
             rounded-lg
+            flex
+            flex-col
         `}>
             <Entry title="Número" type="number" value={numero} changedValue={setNumero} maxl="9"/>
             <Entry title="Nome" value={nome} changedValue={setNome}/>
-            <Entry title="Clínica" value={clinica} changedValue={setClinica}/>
+            {/* <Entry title="Clínica" value={clinica} changedValue={setClinica}/> */}
+            <Select value={clinica} changedValue={setClinica}/>
             <Entry title="Origem" value={origem} changedValue={setOrigem}/>
             <Entry title="Destino" value={destino}  changedValue={setDestino}/>
 

@@ -51,9 +51,7 @@ export function TableLaudos(props: TableLaudosProps) {
                     </tr>
                     
                     {/* criar uma função para as anotações, referenciadas ao número do laudo */}
-                    <tr className="bg-blue-600 text-gray-50">
-                        {/* <div>15/01</div>
-                        <div className="px-2">12:17h</div> */}
+                    {/* <tr className="bg-blue-600 text-gray-50">
                         <td colSpan={6}>
                             <table className="w-full">
                                 <tr>
@@ -67,7 +65,7 @@ export function TableLaudos(props: TableLaudosProps) {
                                 </tr>
                             </table>
                         </td>
-                    </tr>
+                    </tr> */}
                     {/* <tr className={`
                         relative
                         w-full bg-blue-700 text-gray-50
