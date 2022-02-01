@@ -36,6 +36,15 @@ export function TableLaudos(props: TableLaudosProps) {
 
     function dataRender() {
         return props.laudos?.map((laudo, index) => {
+            let dt = new Date()
+            
+            let d = String(dt.getDate()).padStart(2, '0')
+            let m = String(dt.getMonth() + 1).padStart(2, '0')
+            let y = dt.getFullYear()
+
+            const getDate = () => `${d}/${m}/${y}`
+
+
             return (
                 <>
                     <tr key={index}
@@ -51,21 +60,24 @@ export function TableLaudos(props: TableLaudosProps) {
                     </tr>
                     
                     {/* criar uma função para as anotações, referenciadas ao número do laudo */}
-                    {/* <tr className="bg-blue-600 text-gray-50">
+                    <tr className="bg-blue-600 text-gray-50">
                         <td colSpan={6}>
-                            <table className="w-full">
-                                <tr>
-                                    <td colSpan={5} className="px-2 py-1">
+                            <table className="w-full flex flex-col">
+                                <tr className="flex justify-between items-center px-2 py-1">
+                                    <td colSpan={2}>
+                                        {getDate()}
+                                    </td>
+                                    <td colSpan={4} className="flex justify-self-start">
                                         Este laudo será aceito amanhã
                                     </td>
-                                    <td className="flex justify-end items-center px-2 py-1">
+                                    <td className="flex items-center">
                                         <button>{EditIcon}</button>
                                         <button>{CloseIcon}</button>
                                     </td>
                                 </tr>
                             </table>
                         </td>
-                    </tr> */}
+                    </tr>
                     {/* <tr className={`
                         relative
                         w-full bg-blue-700 text-gray-50

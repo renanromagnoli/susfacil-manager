@@ -27,9 +27,6 @@ export function Select(props) {
                     <option value="Cardio/Neuro/Nefro"></option>
                     <option value="Cirurgia Geral"></option>
                     <option value="Clínica Geral"></option>
-                    {/* <option value="Cardiologia"></option>
-                    <option value="Nefrologia"></option>
-                    <option value="Neurologia"></option> */}
                     <option value="Ortopedia"></option>
                     <option value="Obstetrícia/Pediatria"></option>
                 </datalist>

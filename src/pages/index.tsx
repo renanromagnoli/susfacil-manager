@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Clinics } from "../components/Clinics";
 import { Form } from "../components/Form";
+import { TrashIcon } from "../components/Icons";
 import { Note } from "../components/Note";
 import { TableLaudos } from "../components/TableLaudos";
 import Laudo from "../core/laudo";
@@ -108,11 +109,19 @@ export default function Home() {
           ? (
               <>
                 <div className="flex justify-end">
-                  <Button className="mb-4" color='blue' onClick={newLaudo}>
+                  <Button className='mb-4 bg-blue-800
+                hover:bg-blue-600' onClick={newLaudo}>
                     Anotar Laudo
                   </Button>
+                  
                 </div>
                 {renderTableOfLaudos()}
+                <div className="flex justify-end">
+                  <Button className='bg-orange-800
+                hover:bg-orange-600 mt-4' onClick={newLaudo}>
+                    Exportar
+                  </Button>
+                </div>
               </>
             )
         : (
@@ -124,7 +133,8 @@ export default function Home() {
           )
         }
       </Note>
-      <Button className="absolute bottom-0 right-0">Limpar Laudos</Button>
+      <Button className="flex gap-2 items-center absolute bottom-0 right-0 bg-gray-800
+                hover:bg-gray-600">Limpar Laudos {TrashIcon}</Button>
       
     </div>
   )

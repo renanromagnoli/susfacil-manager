@@ -1,19 +1,18 @@
 interface ButtonProps {
     children: any
     className?: string
-    color?: 'green' | 'blue' | 'gray'
+    // cor?: 'green' | 'blue' | 'gray'
     onClick?: () => void
 }
 
 export function Button(props: ButtonProps) {
 
-    const color = props.color ?? 'blue'
+    // const cor = props.cor ?? 'blue'
 
     return (
         <button 
             className={`
-                bg-blue-800
-                hover:bg-blue-600
+                
                 text-gray-50
                 rounded-md
                 px-4
