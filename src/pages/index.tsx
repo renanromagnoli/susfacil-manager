@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { Clinics } from "../components/Clinics";
 import { Form } from "../components/Form";
-import { TrashIcon } from "../components/Icons";
+import { AddLaudoIcon, DownloadFileIcon, ShareIcon, TrashIcon, UploadIcon } from "../components/Icons";
 import { Note } from "../components/Note";
 import { TableLaudos } from "../components/TableLaudos";
 import Laudo from "../core/laudo";
@@ -104,24 +104,30 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <Clinics />
-      <Note title="Ortopedia">
+      <Note title="Ortopedia" newLaudo={newLaudo}>
         { visible === 'table' 
           ? (
               <>
-                <div className="flex justify-end">
-                  <Button className='mb-4 bg-blue-800
+                {/* <div className="flex justify-end mb-4">
+                  <Button className='bg-blue-400
                 hover:bg-blue-600' onClick={newLaudo}>
-                    Anotar Laudo
+                    {AddLaudoIcon}
+                  </Button>
+                  <Button className='bg-gray-400
+                hover:bg-green-600' onClick={newLaudo}>
+                    {DownloadFileIcon}
                   </Button>
                   
-                </div>
+                </div> */}
                 {renderTableOfLaudos()}
-                <div className="flex justify-end">
-                  <Button className='bg-orange-800
-                hover:bg-orange-600 mt-4' onClick={newLaudo}>
-                    Exportar
+                {/* <div className="flex justify-end">
+                  <Button className='bg-blue-400
+                hover:bg-green-600 
+                  mt-4 px-2
+                  transition-all .3s' onClick={newLaudo}>
+                    {DownloadFileIcon}
                   </Button>
-                </div>
+                </div> */}
               </>
             )
         : (
@@ -133,8 +139,25 @@ export default function Home() {
           )
         }
       </Note>
-      <Button className="flex gap-2 items-center absolute bottom-0 right-0 bg-gray-800
-                hover:bg-gray-600">Limpar Laudos {TrashIcon}</Button>
+      {/* <div className="flex flex-col justify-end items-end absolute right-0 bottom-0">
+        <Button className="flex items-center bg-green-800
+                  hover:bg-green-600">
+                    {ShareIcon}
+        </Button>
+
+        <Button className="flex gap-2 items-center bg-blue-800
+        hover:bg-blue-600 mb-4">
+            {UploadIcon}
+        </Button>
+        
+        
+      </div> */}
+      {/* <div>
+        <Button className="flex gap-2 items-center absolute bottom-0 right-0 bg-gray-800
+        hover:bg-gray-600">
+          <div>{TrashIcon}</div> 
+        </Button>
+      </div> */}
       
     </div>
   )

@@ -13,7 +13,7 @@ export function Note(props: NoteProps) {
             rounded-md
             my-3
         `}>
-            <Title>{props.title}</Title>
+            <Title newLaudoButton={props.newLaudo}>{props.title}</Title>
             
             <div className="p-6">
                 {props.children}

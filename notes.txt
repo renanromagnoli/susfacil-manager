@@ -1,0 +1,14 @@
+criar área de informação a esquerda
+colocar urgencia ne paciente para ser monitorado pelo sistema com maior freq
+determinar intervalo de raspagem
+verificar login
+
+tirar botões (add laudo e download laudos) do box da clínica, quando for cadastrar laudo
+
+inserir os quadros qnd as clínicas forem selecionadas
+
+upload de pdf
+
+compartilhar whatsapp
+
+apagar laudos

@@ -27,7 +27,7 @@ export function TableLaudos(props: TableLaudosProps) {
 
     function infoIconsRender(laudo: Laudo) {
         return (
-            <td className="flex justify-center items-center px-2 py-1">
+            <td className="text-center">
                 <button>{InfoIcon}</button>
                 {/* <button>{ArrowIcon}</button> */}
             </td>
@@ -52,10 +52,10 @@ export function TableLaudos(props: TableLaudosProps) {
                             ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
                         `}>
                         {infoIconsRender(laudo)}
-                        <td className="text-center p-2 text-blue-600">{laudo.number}</td>
-                        <td className="text-left p-2">{laudo.name}</td>
-                        <td className="text-center p-2">{laudo.from}</td>
-                        <td className="text-center p-2">{laudo.to}</td>
+                        <td className="text-center p-1 text-blue-600">{laudo.number}</td>
+                        <td className="text-left p-1">{laudo.name}</td>
+                        <td className="text-center p-1">{laudo.from}</td>
+                        <td className="text-center p-1">{laudo.to}</td>
                         {showActions ? actionsRender(laudo) : false}
                     </tr>
                     
@@ -101,7 +101,7 @@ export function TableLaudos(props: TableLaudosProps) {
 
     function actionsRender(laudo: Laudo) {
         return (
-            <td className="flex text-center justify-center items-center">
+            <td className="flex justify-center items-center">
                 {props.selectedLaudo ? (
                     <button onClick={() => props.selectedLaudo?.(laudo)} className={`
                         text-green-800

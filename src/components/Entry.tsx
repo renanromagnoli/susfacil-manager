@@ -5,7 +5,7 @@ interface EntryProps {
     readonly?: boolean
     changedValue?: (value: any) => void
     maxl?: any
-
+    className?: string
 }
 
 export function Entry(props: EntryProps) {
@@ -15,6 +15,7 @@ export function Entry(props: EntryProps) {
             className={`
                 flex flex-col
                 p-3
+                ${props.className}
             `}
         >
             <label className="mb-2">

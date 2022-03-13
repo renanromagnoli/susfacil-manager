@@ -12,12 +12,15 @@ export function Button(props: ButtonProps) {
     return (
         <button 
             className={`
-                
+                flex
+                justify-center
+                items-center
                 text-gray-50
                 rounded-md
-                px-4
-                py-2
                 m-1
+                w-8
+                h-8
+                hover:shadow-sm
                 ${props.className}
             `}
             onClick={props.onClick}
