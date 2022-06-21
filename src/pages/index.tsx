@@ -85,7 +85,7 @@ export default function Home() {
     atualList.splice(indexToDelete, 1)
     setListLaudos(atualList)
     localStorage.setItem('laudos', JSON.stringify(atualList))
-    location.reload()
+    location.reload() // Reload?!
   }
 
   function renderTableOfLaudos() {
