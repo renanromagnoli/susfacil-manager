@@ -1,1 +1,1 @@
-export const linkLaudo = (number) => `http://www.susfacil.mg.gov.br////assistencial/urgencia/RLI/rli_gerenciador.php?codSol=${number}&ex=1&ecp=8b7dba79`
+export const linkLaudo = (number: number) => `http://www.susfacil.mg.gov.br////assistencial/urgencia/RLI/rli_gerenciador.php?codSol=${number}&ex=1&ecp=8b7dba79`

@@ -19,15 +19,7 @@ export default class Laudo {
         this.#from = from
         this.#to = to
         this.#notes = notes
-    }
-
-    static empty() {
-        return new Laudo('', 0, '', '', null, null)
-    }
-
-    set newNote(note: NoteI) {
-        this.#notes.push(note)
-    }
+    }    
     
     get id() {
         return this.#id
@@ -46,6 +38,14 @@ export default class Laudo {
     }
     get to() {
         return this.#to
+    }
+
+    set newNote(note: NoteI) {
+        this.#notes.push(note)
+    }
+    
+    static empty() {
+        return new Laudo('', 0, '', '', null, null)
     }
 
 }

@@ -1,5 +1,6 @@
 import Laudo from "../core/laudo";
 import {DocumentAdd, ArrowIcon, InfoIcon, EditIcon, TrashIcon, CloseIcon } from "./Icons";
+import Obs from "./Obs";
 
 interface TableLaudosProps {
     laudos: Laudo[]
@@ -33,6 +34,13 @@ export function TableLaudos(props: TableLaudosProps) {
             </td>
         )
     }
+
+    function obsRender() {
+        return(
+            <Obs onChange={console.log} />
+        )
+    }
+
     function dataRender() {
         return props.laudos?.map((laudo, index) => {
             return (
@@ -54,17 +62,7 @@ export function TableLaudos(props: TableLaudosProps) {
                         {/* <div>15/01</div>
                         <div className="px-2">12:17h</div> */}
                         <td colSpan={6}>
-                            <table className="w-full">
-                                <tr>
-                                    <td colSpan={5} className="px-2 py-1">
-                                        Este laudo será aceito amanhã
-                                    </td>
-                                    <td className="flex justify-end items-center px-2 py-1">
-                                        <button>{EditIcon}</button>
-                                        <button>{CloseIcon}</button>
-                                    </td>
-                                </tr>
-                            </table>
+                            {obsRender()}
                         </td>
                     </tr>
                     {/* <tr className={`
