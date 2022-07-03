@@ -23,24 +23,24 @@ export default function Home() {
     'Cirurgia'
   ]
 
-  function selectedLaudo(laudo: Laudo) {
-    setLaudo(laudo)
-    setVisible('form')
-  }
+  // function selectedLaudo(laudo: Laudo) {
+  //   setLaudo(laudo)
+  //   setVisible('form')
+  // }
   
-  function newLaudo() {
-    setLaudo(Laudo.empty())
-    setVisible('form')
-  }
+  // function newLaudo() {
+  //   setLaudo(Laudo.empty())
+  //   setVisible('form')
+  // }
   
-  function saveLaudo(laudo: Laudo) {
-    console.log(laudo)
-    setVisible('table')
-  }
+  // function saveLaudo(laudo: Laudo) {
+  //   console.log(laudo)
+  //   setVisible('table')
+  // }
 
-  function deletedLaudo(laudo: Laudo) {
-    console.log(laudo.name, ' deletado')
-  }
+  // function deletedLaudo(laudo: Laudo) {
+  //   console.log(laudo.name, ' deletado')
+  // }
 
   return (
     <div className={`
@@ -52,17 +52,18 @@ export default function Home() {
     `}>
       <Clinics />
       {clinicas.map((clinica, i) => {
-        return(
-          <Box key={i} title={clinica}>
-            { visible === 'table' 
+        return (
+        <>
+          <Box key={i} title={clinica} laudos={laudos} />
+            {/* { visible === 'table' 
               ? 
               (
                 <>
-                  {/* <div className="flex justify-end">
+                  <div className="flex justify-end">
                     <Button className="mb-4" color='blue' onClick={newLaudo}>
                       Anotar Laudo
                     </Button>
-                  </div> */}
+                  </div>
                   <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
                 </>
               )
@@ -75,7 +76,9 @@ export default function Home() {
                 />
               )
             }
-          </Box>
+          </Box> */
+          }
+        </>
         )
       })}
     </div>

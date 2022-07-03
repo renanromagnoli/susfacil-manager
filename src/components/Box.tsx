@@ -1,12 +1,46 @@
+import { useState } from "react"
+import Laudo from "../core/laudo"
+import { Form } from "./Form"
 import { AddLaudoIcon } from "./Icons"
+import { TableLaudos } from "./TableLaudos"
 import { Title } from "./Title"
 
 interface BoxProps {
     title: string
-    children: any
+    // children: any
+    laudos: Laudo[]
 }
 
 export function Box(props: BoxProps) {
+
+    const [visible, setVisible] = useState<'table' | 'form'>('table')
+    const [laudo, setLaudo] = useState<Laudo>(Laudo.empty())
+
+    const {laudos} = props
+
+    function selectedLaudo(laudo: Laudo) {
+        setLaudo(laudo)
+        setVisible('form')
+        // console.log(laudo)
+      }
+      
+      function newLaudo() {
+        setLaudo(Laudo.empty())
+        setVisible('form')
+        // console.log(laudo)
+      }
+      
+      function saveLaudo(laudo: Laudo) {
+        // console.log(laudo)
+        // setVisible('table')
+        console.log(laudo)
+      }
+    
+      function deletedLaudo(laudo: Laudo) {
+        // console.log(laudo.name, ' deletado')
+        console.log(laudo)
+      }
+
     return (
         <div className={`
             flex flex-col w-2/3
@@ -21,14 +55,24 @@ export function Box(props: BoxProps) {
             `}>
                 <div><Title>{props.title}</Title></div>
                 <div className="mr-3">
-                    <button>
+                    <button onClick={newLaudo}>
                         {AddLaudoIcon}
                     </button>
                 </div>
             </div>
-            <div className="p-6">
-                {props.children}
-            </div>
+            {visible === 'table'
+                ?
+                <div className="p-6">
+                    <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+                </div>
+                :
+                <Form 
+                    laudo={laudo}
+                    cancel={() => setVisible('table')}
+                    changedLaudo={saveLaudo}
+                />
+
+            }
         </div>
     )
 }
