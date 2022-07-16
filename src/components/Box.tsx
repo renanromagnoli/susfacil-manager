@@ -41,13 +41,8 @@ export function Box(props: BoxProps) {
         console.log(laudo)
       }
 
-    return (
-        <div className={`
-            flex flex-col w-2/3
-            bg-white text-blue-900
-            rounded-md
-            my-4
-        `}>
+      function renderBoxHeader() {
+        return (
             <div className={`
                 flex
                 justify-between
@@ -60,19 +55,33 @@ export function Box(props: BoxProps) {
                     </button>
                 </div>
             </div>
-            {visible === 'table'
-                ?
-                <div className="p-6">
-                    <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
-                </div>
-                :
-                <Form 
-                    laudo={laudo}
-                    cancel={() => setVisible('table')}
-                    changedLaudo={saveLaudo}
-                />
+        )   
+      }
 
-            }
+      function renderTableOrForm() {
+        return (
+            visible === 'table'
+                ?   <div className="p-6">
+                        <TableLaudos laudos={laudos} selectedLaudo={selectedLaudo} deletedLaudo={deletedLaudo}/>
+                    </div>
+                
+                :   <Form 
+                        laudo={laudo}
+                        cancel={() => setVisible('table')}
+                        changedLaudo={saveLaudo}
+                    />
+        )
+      }
+
+    return (
+        <div className={`
+            flex flex-col w-2/3
+            bg-white text-blue-900
+            rounded-md
+            my-4
+        `}>
+            {renderBoxHeader()}
+            {renderTableOrForm()}
         </div>
     )
 }

@@ -3,12 +3,12 @@ import  ClinicaModel from "../core/Clinica"
 import { createClinicsCheck } from "../functions/createClinicsCheck"
 
 interface ClinicaProps {
-    // clinica: ClinicaModel
+    clinica: ClinicaModel[]
     onChange(): (clinicas: Array<string>) => void
 }
 
 // 
-export function ClinicsCheck({onChange}) {
+export function ClinicsCheck({clinicas, onChange}) {
 
     // const [clinicaGeral, setClinicaGeral] = useState(false)
     // const [selectedClinics, setSelectedClinics] = useState([])
@@ -18,7 +18,7 @@ export function ClinicsCheck({onChange}) {
     // const {clinica} = props
 
     const clinicsOptions = createClinicsCheck()
-    let clinicsSelected = []
+    let clinicsSelected = clinicas
     
 
     // function addRemoveClinica(clinica) {
@@ -32,19 +32,22 @@ export function ClinicsCheck({onChange}) {
         
         const clinicaCheck = e.target.value
 
+        console.log('clinicsSelected antes: ', clinicsSelected)
         clinicsSelected.includes(clinicaCheck) 
-            ? clinicsSelected.splice(clinicsSelected.indexOf(clinicaCheck), 1)
-            : clinicsSelected.push(clinicaCheck)
+        ? clinicsSelected.splice(clinicsSelected.indexOf(clinicaCheck), 1)
+        : clinicsSelected.push(clinicaCheck)
         console.log('Check:', clinicaCheck)
+        console.log('clinicsSelected depois: ', clinicsSelected)
         
         onChange(clinicsSelected)
     }
 
     function renderClinicsChecks() {
+        console.log('Renderizando Clinics Check...')
         return clinicsOptions.map((clinic, i) => {
             return (
                 <div>
-                    <input key={i} type="checkbox" id={clinic.id} name={clinic.titulo} value={clinic.id} onChange={(e) => handleClinica(e)}/> <label htmlFor={clinic.id}>{clinic.titulo}</label>
+                    <input key={i} type="checkbox" id={clinic.id} name={clinic.titulo} value={clinic.id} onChange={e => handleClinica(e)}/> <label htmlFor={clinic.id}>{clinic.titulo}</label>
                 </div>
             )
         })

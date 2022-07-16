@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { ClinicsCheck } from "../components/ClinicsCheck";
 import { Form } from "../components/Form";
@@ -16,6 +16,7 @@ export default function Home() {
   
   const [clinicasSelecionadas, setClinicasSelecionadas] = useState([])
 
+
   const laudos = [
     new Laudo('Renan Luís Romagnoli Silveira', 123890567, 'Ortopedia', 'HAGF', 'HNSD', []),
     new Laudo('Rodrigo Brum', 123890789, 'Uti', 'HNSD', 'HPJM', []),
@@ -23,13 +24,14 @@ export default function Home() {
     new Laudo('Rodrigo Generoso', 123898565, 'Pediatria', 'HAGF', 'HSS', []),
   ]
 
+  useEffect(() => {
+    renderBoxes()
+  }, [clinicasSelecionadas])
+
   function renderBoxes() {
-    console.log('clinicas selecionadas: ', clinicasSelecionadas)
-    return clinicasSelecionadas?.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)
+    console.log('renderBoxes... ', clinicasSelecionadas)
+    return clinicasSelecionadas.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)
   }
-
-  
-
 
   return (
     <div className={`
@@ -39,8 +41,9 @@ export default function Home() {
       h-full
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
-      <ClinicsCheck onChange={(selecaoClinicas) => setClinicasSelecionadas(selecaoClinicas)}/>
-      {renderBoxes()}
+      <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => setClinicasSelecionadas(selecaoClinicas)}/>
+      {clinicasSelecionadas ? renderBoxes() : ''}
+      {/* {clinicasSelecionadas?.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)} */}
     </div>
   )
 }
