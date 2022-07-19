@@ -42,7 +42,7 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => setClinicasSelecionadas(selecaoClinicas)}/>
-      {clinicasSelecionadas ? renderBoxes() : ''}
+      {renderBoxes()}
       {/* {clinicasSelecionadas?.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)} */}
     </div>
   )

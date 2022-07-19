@@ -10,32 +10,20 @@ interface ClinicaProps {
 // 
 export function ClinicsCheck({clinicas, onChange}) {
 
-    // const [clinicaGeral, setClinicaGeral] = useState(false)
-    // const [selectedClinics, setSelectedClinics] = useState([])
-
-    // const [check, setCheck] = useState(false)
-
-    // const {clinica} = props
-
     const clinicsOptions = createClinicsCheck()
-    let clinicsSelected = clinicas
     
+    let clinicsSelected = clinicas
 
-    // function addRemoveClinica(clinica) {
-    //     const c = clinica
-    //     let listaDeClinicas = selectedClinics
-    //     listaDeClinicas.includes(c) 
-    //     ? listaDeClinicas.splice(listaDeClinicas.indexOf(c), 1)
-    //     : setSelectedClinics([...listaDeClinicas, c])
-    // }
     function handleClinica(e) {
         
         const clinicaCheck = e.target.value
 
         console.log('clinicsSelected antes: ', clinicsSelected)
+        
         clinicsSelected.includes(clinicaCheck) 
-        ? clinicsSelected.splice(clinicsSelected.indexOf(clinicaCheck), 1)
-        : clinicsSelected.push(clinicaCheck)
+            ? clinicsSelected.splice(clinicsSelected.indexOf(clinicaCheck), 1)
+            : clinicsSelected.push(clinicaCheck)
+        
         console.log('Check:', clinicaCheck)
         console.log('clinicsSelected depois: ', clinicsSelected)
         
@@ -47,7 +35,7 @@ export function ClinicsCheck({clinicas, onChange}) {
         return clinicsOptions.map((clinic, i) => {
             return (
                 <div>
-                    <input key={i} type="checkbox" id={clinic.id} name={clinic.titulo} value={clinic.id} onChange={e => handleClinica(e)}/> <label htmlFor={clinic.id}>{clinic.titulo}</label>
+                    <input key={i} type="checkbox" id={clinic.id} name={clinic.titulo} value={clinic.titulo} onChange={e => handleClinica(e)}/> <label htmlFor={clinic.id}>{clinic.titulo}</label>
                 </div>
             )
         })
