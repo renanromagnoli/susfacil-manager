@@ -2,10 +2,11 @@ export class BoxModel {
     #id: string
     #title: string
     #category: string
+    #color: string
 
     constructor(category: string) {
+        this.#title = category
         this.#category = category
-        this.#title = this.title
 
     }
     get id() {
@@ -13,6 +14,12 @@ export class BoxModel {
     }
     get title() {
         return this.#title
+    }
+    get category() {
+        return this.#category
+    }
+    get color() {
+        return this.#color
     }
 
 }
