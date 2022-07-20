@@ -31,7 +31,7 @@ export function ClinicsCheck({clinicas, onChange}) {
     }
 
     function renderClinicsChecks() {
-        console.log('Renderizando Clinics Check...')
+        console.log('Renderizando os ClinicsCheck...')
         return clinicsOptions.map((clinic, i) => {
             return (
                 <div>
@@ -47,24 +47,6 @@ export function ClinicsCheck({clinicas, onChange}) {
     return (
         <div className="flex w-full bg-blue-100 p-4 justify-evenly text-gray-600">
             {renderClinicsChecks()}
-            {/* <div>
-                <input type="checkbox" id="clinica-geral" name="clinica" value={'clinica-geral'} onChange={(e) => handleClinicaGeral(e.target.value)}/> <label htmlFor="clinica-geral">Clínica Geral</label>
-            </div>
-            <div>
-                <input type="checkbox" id="obstetricia-pediatria" name="clinica" /> <label htmlFor="obstetricia-pediatria">Obstetrícia/Pediatria</label>
-            </div>
-            <div>
-                <input type="checkbox" id="clinica-geral" name="clinica" /> <label htmlFor="clinica-geral">Cardio/Neuro/Nefro</label>
-            </div>
-            <div>
-                <input type="checkbox" id="clinica-geral" name="clinica" /> <label htmlFor="clinica-geral">Ortopedia</label>
-            </div>
-            <div>
-                <input type="checkbox" id="clinica-geral" name="clinica" /> <label htmlFor="clinica-geral">Cirurgia Geral</label>
-            </div>
-            <div>
-                <input type="checkbox" id="clinica-geral" name="clinica" /> <label htmlFor="clinica-geral">Uti</label>
-            </div> */}
         </div>
     )
 }

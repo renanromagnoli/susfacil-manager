@@ -7,6 +7,7 @@ import { TableLaudos } from "../components/TableLaudos";
 import Laudo from "../core/laudo";
 import { createClinicsCheck } from "../functions/createClinicsCheck";
 import ClinicaModel from "../core/Clinica";
+import { createBoxs } from "../functions/createBoxes";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
   const [visible, setVisible] = useState<'table' | 'form'>('table')
   
   const [clinicasSelecionadas, setClinicasSelecionadas] = useState([])
+  const [boxsSelecionados, setBoxsSelecionados] = useState([])
 
 
   const laudos = [
@@ -25,12 +27,15 @@ export default function Home() {
   ]
 
   useEffect(() => {
+    setBoxsSelecionados(createBoxs(clinicasSelecionadas))
     renderBoxes()
   }, [clinicasSelecionadas])
 
   function renderBoxes() {
-    console.log('renderBoxes... ', clinicasSelecionadas)
-    return clinicasSelecionadas.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)
+    const boxsToRender = boxsSelecionados
+    // const boxs = createBoxs(clinicasSelecionadas)
+    console.log('renderBoxes... ', boxsToRender)
+    return boxsToRender.map((clinica, i) => <Box key={i} title={clinica.title} laudos={laudos} />)
   }
 
   return (
@@ -42,7 +47,7 @@ export default function Home() {
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
       <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => setClinicasSelecionadas(selecaoClinicas)}/>
-      {renderBoxes()}
+      {boxsSelecionados && renderBoxes()}
       {/* {clinicasSelecionadas?.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)} */}
     </div>
   )
