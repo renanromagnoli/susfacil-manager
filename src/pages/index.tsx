@@ -53,7 +53,6 @@ export default function Home() {
       flex-col
       justify-start items-center
       h-full
-      
     `}>
       <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => buildingBoxsToRender(selecaoClinicas)}/>
       {boxsSelecionados.length > 0 && renderBoxes()}
