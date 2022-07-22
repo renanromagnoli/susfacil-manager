@@ -2,7 +2,7 @@ import { useState } from "react"
 import Laudo from "../core/laudo"
 import { Form } from "./Form"
 import { AddLaudoIcon } from "./Icons"
-import { TableLaudos } from "./TableLaudos"
+import  TableLaudos  from "./TableLaudos"
 import { Title } from "./Title"
 
 interface BoxProps {

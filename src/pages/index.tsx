@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 import { ClinicsCheck } from "../components/ClinicsCheck";
 import { Form } from "../components/Form";
 import { Box } from "../components/Box";
-import { TableLaudos } from "../components/TableLaudos";
+import  TableLaudos  from "../components/TableLaudos";
 import Laudo from "../core/laudo";
 import { createClinicsCheck } from "../functions/createClinicsCheck";
 import ClinicaModel from "../core/Clinica";

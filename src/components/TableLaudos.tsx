@@ -1,14 +1,17 @@
-import Laudo from "../core/laudo";
+// import { memo } from "react";
+import { memo } from "react";
+import LaudoModel from "../core/laudo";
+import { Laudo } from "./Laudo";
 import {DocumentAdd, ArrowIcon, InfoIcon, EditIcon, TrashIcon, CloseIcon } from "./Icons";
 import Obs from "./Obs";
 
 interface TableLaudosProps {
-    laudos: Laudo[]
-    selectedLaudo?: (laudo: Laudo) => void
-    deletedLaudo?: (laudo: Laudo) => void
+    laudos: LaudoModel[]
+    selectedLaudo?: (laudo: LaudoModel) => void
+    deletedLaudo?: (laudo: LaudoModel) => void
 }
 
-export function TableLaudos(props: TableLaudosProps) {
+const TableLaudos = (props: TableLaudosProps) => {
 
     const showActions = props.selectedLaudo || props.deletedLaudo
 
@@ -26,7 +29,7 @@ export function TableLaudos(props: TableLaudosProps) {
         )
     }
 
-    function infoIconsRender(laudo: Laudo) {
+    function infoIconsRender(laudo: LaudoModel) {
         return (
             <td className="flex justify-center items-center px-2 py-1">
                 <button>{InfoIcon}</button>
@@ -45,6 +48,7 @@ export function TableLaudos(props: TableLaudosProps) {
         return props.laudos?.map((laudo, index) => {
             return (
                 <>
+                    {/* <Laudo laudo={laudo} index={index} /> */}
                     <tr key={laudo.id}
                         className={`
                             ${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'}
@@ -65,37 +69,25 @@ export function TableLaudos(props: TableLaudosProps) {
                             {obsRender()}
                         </td>
                     </tr>
-                    {/* <tr className={`
-                        relative
-                        w-full bg-blue-700 text-gray-50
-                        flex flex-col 
-                        `}>
-                        <tr className="flex p-2 w-full">
-
-                            <td colSpan={5}>Este laudo será aceito amanhã</td>
-                        </tr>
-                        <tr className="flex p-2 w-full">
-                        
-                            <td colSpan={5}>Este laudo será aceito amanhã</td>
-                        </tr>
-                        <hr />
-                    
-                    </tr> */}
                 </>
             )
         })
     }
 
-    function actionsRender(laudo: Laudo) {
+    function actionsRender(laudo: LaudoModel) {
         return (
             <td className="flex text-center justify-center items-center">
-                {props.selectedLaudo ? (
-                    <button onClick={() => props.selectedLaudo?.(laudo)} className={`
-                        text-green-800
-                        hover:text-green-500
-                        transition-all ease-in .2s
-                    `}>{EditIcon}</button>
-                    ) : false}
+                {props.selectedLaudo 
+                    ? ( <button onClick={() => props.selectedLaudo?.(laudo)} 
+                        className={`
+                            text-green-800
+                            hover:text-green-500
+                            transition-all ease-in .2s    
+                        `}>
+                            {EditIcon}
+                        </button> )
+                    : false
+                }
                 <button>{DocumentAdd}</button>
                 {props.deletedLaudo ? (
                     <button onClick={() => props.deletedLaudo?.(laudo)} className={`
@@ -125,3 +117,5 @@ export function TableLaudos(props: TableLaudosProps) {
         </table>
     )
 }
+
+export default TableLaudos

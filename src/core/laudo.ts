@@ -3,7 +3,7 @@ interface NoteI {
     date: string
 }
 
-export default class Laudo {
+export default class LaudoModel {
     #id: string
     #name: string
     #number: number
@@ -20,6 +20,7 @@ export default class Laudo {
         this.#to = to
         this.#notes = notes
     }    
+    
     
     get id() {
         return this.#id
@@ -39,13 +40,34 @@ export default class Laudo {
     get to() {
         return this.#to
     }
-
+    get notes(){
+        return this.#notes
+    }
+    
     set newNote(note: NoteI) {
         this.#notes.push(note)
     }
     
     static empty() {
-        return new Laudo('', 0, '', '', null, null)
+        return new LaudoModel('', 0, '', '', null, null)
+    }
+
+    changeNumber(number: number) {
+        const newNumber = number
+        return new LaudoModel(this.name, newNumber, this.clinic, this.from, this.to, this.notes, this.id)
+    }
+    changeClinic(clinic: string) {
+        const newClinic = clinic
+        return new LaudoModel(this.name, this.number, newClinic, this.from, this.to, this.notes, this.id)
+    }
+    changeTo(to: string) {
+        const newTo = to
+        return new LaudoModel(this.name, this.number, this.clinic, this.from, newTo, this.notes, this.id)
+    }
+    changeNotes(notes: Array<NoteI>) {
+        const newNotes = notes
+        return new LaudoModel(this.name, this.number, this.clinic, this.from, this.to, newNotes, this.id)
+        
     }
 
 }
