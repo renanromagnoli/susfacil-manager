@@ -2,19 +2,19 @@ export class BoxModel {
     #id: number
     #title: string
     #category: string
-    #laudos: String[]
-    #color: string
+    #laudos?: Array<string>
+    #color?: string
 
-    constructor(id: number, category: string, laudos: String[], color='white') {
+    constructor(id: number, title: string, laudos=[''], color='white') {
         this.id = id
-        this.#title = category
-        this.#category = category
+        this.#title = title
         this.laudos = laudos
+        this.category = title
         this.#color = color
     }
 
     static empty() {
-        return new BoxModel(0, '', [])
+        return new BoxModel(0, '')
     }
     
     get id() {
@@ -24,8 +24,9 @@ export class BoxModel {
         return this.#title
     }
     get category() {
-        return this.#category
+        return this.#category    
     }
+    
     get color() {
         return this.#color
     }
@@ -40,9 +41,31 @@ export class BoxModel {
         this.#laudos = newLaudos
     }
 
-    changeColor(newColor: string) {
-        const color = newColor
-        return new BoxModel(this.id, this.category, this.laudos, color)
-    }
+    set category(title) {
+
+        let tituloModificado = title
+        
+        if (tituloModificado.includes(' ') || tituloModificado.includes('/')) {
+            if (tituloModificado.includes(' ')) {
+                tituloModificado = tituloModificado.split(' ', 1).toString().toLowerCase()
+                this.#category = tituloModificado.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+                // console.log('titulo modificado com espaço: ', this.category)
+            }
+            if (tituloModificado.includes('/')) {
+                tituloModificado = tituloModificado.split('/', 1).toString().toLowerCase()
+                this.#category = tituloModificado.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+                // console.log('titulo modificado cocm barra: ', this.category)
+            }
+            
+            // console.log('ID:', this.category)
+        } else {
+            this.#category = tituloModificado.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+            // console.log('titulo com palavra unica: ', this.category)
+    }}
+
+    // changeColor(newColor: string) {
+    //     const color = newColor
+    //     return new BoxModel(this.id, this.category, this.laudos, color)
+    // }
 
 }
