@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
 
                 </Head>
                 
-                <body>
+                <body className='bg-gradient-to-r from-blue-300 to-blue-500'>
                     <GlobalStyle />
                     <Main />
                     <NextScript />

@@ -51,9 +51,9 @@ export default function Home() {
     <div className={`
       flex
       flex-col
-      justify-around items-center
+      justify-start items-center
       h-full
-      bg-gradient-to-r from-blue-300 to-blue-500
+      
     `}>
       <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => buildingBoxsToRender(selecaoClinicas)}/>
       {boxsSelecionados.length > 0 && renderBoxes()}
