@@ -27,15 +27,24 @@ export default function Home() {
   ]
 
   useEffect(() => {
-    setBoxsSelecionados(createBoxs(clinicasSelecionadas))
     renderBoxes()
-  }, [clinicasSelecionadas])
-
+  }, [boxsSelecionados])
+  
+  function boxsListToClassList(list) {
+    let boxToCreate = createBoxs(list)
+    setBoxsSelecionados(boxToCreate)
+  }
+  
   function renderBoxes() {
     const boxsToRender = boxsSelecionados
     // const boxs = createBoxs(clinicasSelecionadas)
-    console.log('renderBoxes... ', boxsToRender)
+    console.log('RENDER Boxes... ', boxsToRender)
     return boxsToRender.map((clinica, i) => <Box key={i} title={clinica.title} laudos={laudos} />)
+  }
+  
+  function buildingBoxsToRender(selecaoClinicas) {
+    setClinicasSelecionadas(selecaoClinicas)
+    setBoxsSelecionados(createBoxs(selecaoClinicas))
   }
 
   return (
@@ -46,8 +55,8 @@ export default function Home() {
       h-full
       bg-gradient-to-r from-blue-300 to-blue-500
     `}>
-      <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => setClinicasSelecionadas(selecaoClinicas)}/>
-      {boxsSelecionados && renderBoxes()}
+      <ClinicsCheck clinicas={clinicasSelecionadas} onChange={(selecaoClinicas: Array<string>) => buildingBoxsToRender(selecaoClinicas)}/>
+      {boxsSelecionados.length > 0 && renderBoxes()}
       {/* {clinicasSelecionadas?.map((clinica, i) => <Box key={i} title={clinica} laudos={laudos} />)} */}
     </div>
   )
